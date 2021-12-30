@@ -1,7 +1,6 @@
 package com.alves.personalbudget.dto;
 
 import com.alves.personalbudget.model.Contact;
-import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel
 public class PersonDTO {
 
     private Long id;
