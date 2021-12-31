@@ -1,5 +1,6 @@
 package com.alves.personalbudget.service;
 
+import com.alves.personalbudget.exception.AttributeMandatoryException;
 import com.alves.personalbudget.model.Category;
 import com.alves.personalbudget.repository.CategoryRepository;
 import org.springframework.beans.BeanUtils;
@@ -15,12 +16,6 @@ public class CategoryService {
 
     @Autowired
     private CategoryRepository repository;
-
-    public Category update(Long id, Category category) {
-        Category categoryPersisted = findById(id).get();
-        BeanUtils.copyProperties(category, categoryPersisted, "id");
-        return repository.save(categoryPersisted);
-    }
 
     public Optional<Category> findById(Long id) {
         return Optional.ofNullable(repository.findById(id)
@@ -42,4 +37,18 @@ public class CategoryService {
       }
        return false;
     }
+
+    public Category update(Category category) {
+        Category categoryPersisted = null;
+
+        if(category.getId() == null){
+            throw new AttributeMandatoryException("Attribute ID is Mandatory !!!");
+        }
+
+        if (findById(category.getId()).isPresent()){
+            categoryPersisted =  repository.save(category);
+        }
+        return  categoryPersisted;
+    }
+
 }

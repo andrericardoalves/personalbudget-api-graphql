@@ -36,4 +36,9 @@ public class CategoryGraphQL implements GraphQLQueryResolver, GraphQLMutationRes
     public Boolean deleteCategoryById(Long id){
         return service.deleteById(id);
     }
+
+    public Category updateCategory(CategoryInput categoryInput){
+        Category category = modelMapper.map(categoryInput, Category.class);
+        return service.update(category);
+    }
 }
