@@ -34,4 +34,12 @@ public class CategoryService {
     public Category save(Category category) {
         return repository.save(category);
     }
+
+    public Boolean deleteById(Long id) {
+      if(findById(id).isPresent()){
+        repository.deleteById(id);
+        return  true;
+      }
+       return false;
+    }
 }

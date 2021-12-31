@@ -2,13 +2,13 @@ version: '3.1'
 services:
   db:
     image: mysql
-    container_name: personalbuget_mysql
+    container_name: personalbudget_mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
     volumes:
-      - personalbuget_data:/var/lib/mysql
+      - personalbudget_data:/var/lib/mysql
 
 volumes:
-  personalbuget_data:
+  personalbudget_data:

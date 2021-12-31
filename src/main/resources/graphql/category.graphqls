@@ -3,6 +3,17 @@ type Category{
     name: String!
 }
 
+input CategoryInput {
+    id: ID,
+    name: String!
+}
+
 extend type Query {
-    categoryFindAll:[Category]
+  findCategoryById(id:ID!):Category
+  findAllCategory:[Category]
+}
+
+extend  type Mutation {
+    deleteCategoryById(id:ID!):Boolean
+    saveCategory(category:CategoryInput!): Category
 }
