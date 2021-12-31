@@ -21,3 +21,5 @@
 
 #### Comments
 Graphiql - http://localhost:8080/personalbudget/graphiql
+
+Queries available in directory: graphql/queries

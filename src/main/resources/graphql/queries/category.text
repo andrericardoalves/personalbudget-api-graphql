@@ -1,0 +1,41 @@
+Queries with GraphiQL in url : http://localhost:8080/personalbudget/graphiql
+-------------Queries ---------------
+query{
+  findAllCategory{
+  id,
+  name
+}
+}
+
+query{
+  findCategoryById(id: 2){
+    name
+  }
+}
+
+-------------Mutations ---------------
+
+mutation{
+  saveCategory(category:{name: "musical instruments"}){
+    id,
+    name
+  }
+}
+
+mutation{
+  saveCategory(category:{name: "clothes"}){
+    id,
+    name
+  }
+}
+
+mutation{
+  updateCategory(category:{id:1, name: "games"}){
+    id,
+    name
+  }
+}
+
+mutation{
+  deleteCategoryById(id:6)
+}
