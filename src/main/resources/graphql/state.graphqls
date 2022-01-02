@@ -1,0 +1,9 @@
+type  State{
+    id: ID,
+    name:String,
+    acronyms: String
+}
+
+extend type Query {
+    findAllStates:[State]
+}
