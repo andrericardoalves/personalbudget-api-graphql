@@ -1,0 +1,8 @@
+Queries with GraphiQL in url : http://localhost:8080/personalbudget/graphiql
+-------------Queries ---------------
+query{
+  findAllStates{
+    id,
+    name
+  }
+}

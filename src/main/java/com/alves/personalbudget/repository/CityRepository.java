@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface CityRepository extends JpaRepository<City, Long> {
 
-    public List<City> findStateById(Long id);
+    public List<City> findCityByStateId(Long id);
 
 }

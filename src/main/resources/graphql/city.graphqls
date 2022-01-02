@@ -1,0 +1,9 @@
+type City{
+   id: ID,
+   name: String,
+   state: State
+}
+
+extend type Query {
+   findCityByStateId(id:ID!):[City]
+}
