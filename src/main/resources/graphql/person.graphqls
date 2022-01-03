@@ -1,0 +1,27 @@
+type Address{
+    address: String,
+    addressNumber: String,
+    complement: String
+    district: String,
+    zipCode:String,
+    city: City
+}
+
+type  Contact{
+   id: ID,
+   name: String,
+   email: String,
+   phone: String
+}
+
+type Person{
+    id: ID,
+    name: String
+    address: Address,
+    active:Boolean,
+    contacts:[Contact]
+}
+
+extend type Query {
+    findPersonById(id:ID): Person
+}

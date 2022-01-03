@@ -1,5 +1,6 @@
 package com.alves.personalbudget.service;
 
+import com.alves.personalbudget.model.City;
 import com.alves.personalbudget.model.Person;
 import com.alves.personalbudget.repository.PersonRepository;
 import org.springframework.beans.BeanUtils;
@@ -8,6 +9,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -34,6 +36,7 @@ public class PersonService {
         repository.save(persistedPerson);
     }
 
+    @Transactional
     public Optional<Person> findById(Long id) {
         return Optional.ofNullable(repository.findById(id)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1)));
@@ -51,5 +54,9 @@ public class PersonService {
 
     public Page<Person> findByNameContaining(String name, Pageable pageable) {
         return repository.findByNameContaining(name, pageable);
+    }
+
+    public City findCityByPersonId(Long id) {
+      return  repository.findCityByPerson(id);
     }
 }

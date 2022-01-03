@@ -16,4 +16,5 @@ public class CityService {
     public List<City> findCityByStateId(Long id){
         return repository.findCityByStateId(id);
     }
+
 }
