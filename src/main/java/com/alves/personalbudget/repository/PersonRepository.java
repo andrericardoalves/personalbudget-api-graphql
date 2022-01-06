@@ -1,6 +1,5 @@
 package com.alves.personalbudget.repository;
 
-import com.alves.personalbudget.model.City;
 import com.alves.personalbudget.model.Person;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +12,6 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     public Page<Person> findByNameContaining(String name, Pageable pageable);
 
-    @Query("select p.address.city from Person p where p.id = id ")
-    public City findCityByPerson(Long id);
+    @Query("select new Person(p.address) from Person p join fetch p.address a where p.id = :id")
+    public Person findAddressById(Long id);
 }

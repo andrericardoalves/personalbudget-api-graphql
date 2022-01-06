@@ -1,6 +1,6 @@
 package com.alves.personalbudget.service;
 
-import com.alves.personalbudget.model.City;
+import com.alves.personalbudget.model.Address;
 import com.alves.personalbudget.model.Person;
 import com.alves.personalbudget.repository.PersonRepository;
 import org.springframework.beans.BeanUtils;
@@ -11,10 +11,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Optional;
 
 @Service
 public class PersonService {
+
+    @PersistenceContext
+    private EntityManager manager;
 
     @Autowired
     private PersonRepository repository;
@@ -56,7 +61,9 @@ public class PersonService {
         return repository.findByNameContaining(name, pageable);
     }
 
-    public City findCityByPersonId(Long id) {
-      return  repository.findCityByPerson(id);
+    public Address findAddressById(Long id){
+        Person person = repository.findAddressById(id);
+        return person.getAddress();
     }
+
 }

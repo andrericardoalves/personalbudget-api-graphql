@@ -27,6 +27,7 @@ public class Person {
     private String name;
 
     @Embedded
+    @Basic(fetch = FetchType.LAZY)
     private Address address;
 
     @NotNull
@@ -42,5 +43,9 @@ public class Person {
     @Transient
     public boolean isInActive() {
         return !this.active;
+    }
+
+    public Person(Address address){
+        this.address = address;
     }
 }
