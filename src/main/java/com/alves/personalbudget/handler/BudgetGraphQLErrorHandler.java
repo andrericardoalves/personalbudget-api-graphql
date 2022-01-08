@@ -3,7 +3,7 @@ package com.alves.personalbudget.handler;
 import com.alves.personalbudget.exception.DomainException;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
-import graphql.servlet.GraphQLErrorHandler;
+import graphql.kickstart.execution.error.GraphQLErrorHandler;
 import graphql.validation.ValidationError;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 @Component
-public class BudgetGraphQLErrorHandler implements  GraphQLErrorHandler{
+public class BudgetGraphQLErrorHandler implements GraphQLErrorHandler {
     @Autowired
     Environment env;
 

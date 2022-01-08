@@ -2,7 +2,8 @@ package com.alves.personalbudget.handler;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import graphql.servlet.GenericGraphQLError;
+import graphql.kickstart.execution.error.GenericGraphQLError;
+
 
 import java.util.List;
 import java.util.Map;

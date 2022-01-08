@@ -5,7 +5,7 @@ import com.alves.personalbudget.model.Contact;
 import com.alves.personalbudget.model.Person;
 import com.alves.personalbudget.service.ContactService;
 import com.alves.personalbudget.service.PersonService;
-import com.coxautodev.graphql.tools.GraphQLResolver;
+import graphql.kickstart.tools.GraphQLResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

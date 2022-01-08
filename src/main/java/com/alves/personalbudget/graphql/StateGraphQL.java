@@ -2,7 +2,7 @@ package com.alves.personalbudget.graphql;
 
 import com.alves.personalbudget.model.State;
 import com.alves.personalbudget.service.StateService;
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

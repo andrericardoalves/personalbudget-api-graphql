@@ -3,8 +3,8 @@ package com.alves.personalbudget.graphql;
 import com.alves.personalbudget.graphql.input.CategoryInput;
 import com.alves.personalbudget.model.Category;
 import com.alves.personalbudget.service.CategoryService;
-import com.coxautodev.graphql.tools.GraphQLMutationResolver;
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import graphql.kickstart.tools.GraphQLMutationResolver;
+import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -41,4 +41,5 @@ public class CategoryGraphQL implements GraphQLQueryResolver, GraphQLMutationRes
         Category category = modelMapper.map(categoryInput, Category.class);
         return service.update(category);
     }
+
 }
