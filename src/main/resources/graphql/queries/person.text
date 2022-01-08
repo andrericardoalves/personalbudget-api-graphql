@@ -1,0 +1,31 @@
+Queries with GraphiQL in url : http://localhost:8080/personalbudget/graphiql
+-------------Queries ---------------
+query{
+  findPersonById(id:1){
+    id,
+    name,
+     contacts{
+      name,
+      phone
+    }
+    address{
+     address,
+      addressNumber
+      city{
+        id
+        name
+      }
+    }
+
+  }
+}
+
+query{
+  findPeople(filterPerson:{name:""},size: 3, page: 2){
+    people{ name, address{address, addressNumber city {
+      id, name
+    }}},
+    totalPages,
+    totalElements
+  }
+}

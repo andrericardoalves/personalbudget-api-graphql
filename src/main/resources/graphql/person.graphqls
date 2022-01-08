@@ -22,6 +22,17 @@ type Person{
     contacts:[Contact]
 }
 
+type PersonResponse{
+    people: [Person]
+    totalElements: Int
+    totalPages: Int
+}
+
+input PersonInput{
+    name: String
+}
+
 extend type Query {
     findPersonById(id:ID): Person
+    findPeople(filterPerson:PersonInput, page: Int = 0, size: Int = 10): PersonResponse
 }

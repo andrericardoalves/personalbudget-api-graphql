@@ -1,4 +1,4 @@
-package com.alves.personalbudget.graphql;
+package com.alves.personalbudget.graphql.resolver;
 
 import com.alves.personalbudget.model.Address;
 import com.alves.personalbudget.model.Contact;

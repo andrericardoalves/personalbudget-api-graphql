@@ -14,4 +14,5 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     @Query("select new Person(p.address) from Person p join fetch p.address a where p.id = :id")
     public Person findAddressById(Long id);
+
 }
