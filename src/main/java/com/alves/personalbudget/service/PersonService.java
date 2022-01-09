@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -66,4 +67,11 @@ public class PersonService {
         return person.getAddress();
     }
 
+    public List<Person> findAll() {
+        return repository.findAll();
+    }
+
+    public List<Person> findPersonIdGreaterThan(Long id) {
+        return repository.findByIdGreaterThan(id);
+    }
 }

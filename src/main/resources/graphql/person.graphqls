@@ -35,4 +35,5 @@ input PersonInput{
 extend type Query {
     findPersonById(id:ID): Person
     findPeople(filterPerson:PersonInput, page: Int = 0, size: Int = 10): PersonResponse
+    findAllPeople(first: Int!, after: Int): PersonConnection @connection (for: "Person")
 }

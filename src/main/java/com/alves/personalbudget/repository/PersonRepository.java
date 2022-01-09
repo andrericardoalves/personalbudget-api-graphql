@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
@@ -15,4 +17,5 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     @Query("select new Person(p.address) from Person p join fetch p.address a where p.id = :id")
     public Person findAddressById(Long id);
 
+    List<Person> findByIdGreaterThan(Long id);
 }

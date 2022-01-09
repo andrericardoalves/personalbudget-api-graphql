@@ -29,3 +29,16 @@ query{
     totalElements
   }
 }
+
+query{
+  findAllPeople(first:5, after:3){
+    edges{node{name, address {
+      address
+      addressNumber
+      complement
+      district
+      zipCode
+    }}}
+    pageInfo{startCursor,endCursor,hasNextPage,hasPreviousPage}
+  }
+}
