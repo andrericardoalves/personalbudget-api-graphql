@@ -3,7 +3,7 @@ package com.alves.personalbudget.service;
 import com.alves.personalbudget.model.Address;
 import com.alves.personalbudget.model.Person;
 import com.alves.personalbudget.repository.PersonRepository;
-import org.springframework.beans.BeanUtils;
+import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,14 +26,19 @@ public class PersonService {
     @Autowired
     private PersonRepository repository;
 
+    @Autowired
+    private ContactService contactService;
+
     public Person update(Long id, Person person) {
         Person persistedPerson = findById(id).get();
 
-        persistedPerson.getContacts().clear();
-        persistedPerson.getContacts().addAll(person.getContacts());
+        persistedPerson.setName(person.getName());
+        persistedPerson.setAddress(person.getAddress());
+        persistedPerson.setActive(person.getActive());
+        persistedPerson.setContacts(person.getContacts());
         persistedPerson.getContacts().forEach(c -> c.setPerson(persistedPerson));
 
-        BeanUtils.copyProperties(person, persistedPerson, "id", "contacts");
+
         return repository.save(persistedPerson);
     }
 
@@ -65,6 +71,13 @@ public class PersonService {
     public Address findAddressById(Long id){
         Person person = repository.findAddressById(id);
         return person.getAddress();
+    }
+
+    public List<Person> getPeople(Long cursor) {
+        if (cursor == null) {
+            return findAll();
+        }
+        return findPersonIdGreaterThan(cursor);
     }
 
     public List<Person> findAll() {

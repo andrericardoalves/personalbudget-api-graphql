@@ -28,12 +28,42 @@ type PersonResponse{
     totalPages: Int
 }
 
-input PersonInput{
+input PersonFilterInput{
     name: String
+}
+
+input PersonInput{
+    id: ID
+    name: String!
+    address: AddressInput!,
+    active:Boolean,
+    contacts:[ContactInput]!
+}
+
+input AddressInput{
+    address: String!,
+    addressNumber: String!,
+    complement: String
+    district: String,
+    zipCode:String!,
+    cityId: Int!
+}
+
+input  ContactInput{
+    id: ID,
+    name: String!,
+    email: String!,
+    phone: String!
 }
 
 extend type Query {
     findPersonById(id:ID): Person
-    findPeople(filterPerson:PersonInput, page: Int = 0, size: Int = 10): PersonResponse
+    findPeople(filterPerson:PersonFilterInput, page: Int = 0, size: Int = 10): PersonResponse
     findAllPeople(first: Int!, after: Int): PersonConnection @connection (for: "Person")
+}
+
+extend type Mutation {
+    savePerson(personInput: PersonInput!): Person
+    updatePerson(id: Int!, personInput: PersonInput!): Person
+    deletePersonById(id: Int!): Boolean
 }

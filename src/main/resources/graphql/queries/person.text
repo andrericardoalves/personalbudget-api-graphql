@@ -42,3 +42,27 @@ query{
     pageInfo{startCursor,endCursor,hasNextPage,hasPreviousPage}
   }
 }
+
+mutation{
+  savePerson(personInput:{name:"Andre", address:{address: "Rua Alves",addressNumber:"150",
+    zipCode:"9999-9999",cityId:150},contacts:[{name:"Ingrid",email:"ingrid@mail.com",
+      phone:"9999-5555"}]}) {
+    id
+    name
+    active
+    address{address, addressNumber, zipCode, city{id, name}}
+    contacts{id, name, phone, email}
+  }
+}
+
+mutation{
+  updatePerson(id:11,personInput:{name:"Andre Strong",active:true, address:{address: "Rua Alves Fialho",addressNumber:"100",
+    zipCode:"1234-1678",cityId:120},contacts:[{id:11,  name:"Ingrid Wonderful",email:"ingridwonderful@mail.com",
+      phone:"98760-4321"}]}) {
+    id
+    name
+    active
+    address{address, addressNumber, zipCode, city{id, name}}
+    contacts{id, name, phone, email}
+  }
+}

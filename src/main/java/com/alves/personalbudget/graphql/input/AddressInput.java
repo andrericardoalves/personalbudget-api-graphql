@@ -5,18 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
-import java.util.List;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class PersonInput {
-    private Long id;
+@NoArgsConstructor
+public class AddressInput {
     @NotEmpty
-    private String name;
+    private String address;
     @NotEmpty
-    private AddressInput address;
-    private Boolean active;
+    private String addressNumber;
+    private String complement;
+    private String district;
     @NotEmpty
-    private List<ContactInput> contacts;
+    private String zipCode;
+    @NotEmpty
+    private Long cityId;
 }
