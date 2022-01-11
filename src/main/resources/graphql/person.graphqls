@@ -1,3 +1,9 @@
+type PersonResponse{
+    list: [Person]
+    totalElements: Int
+    totalPages: Int
+}
+
 type Address{
     address: String,
     addressNumber: String,
@@ -20,12 +26,6 @@ type Person{
     address: Address,
     active:Boolean,
     contacts:[Contact]
-}
-
-type PersonResponse{
-    people: [Person]
-    totalElements: Int
-    totalPages: Int
 }
 
 input PersonFilterInput{

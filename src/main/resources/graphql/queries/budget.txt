@@ -1,0 +1,35 @@
+Queries with GraphiQL in url : http://localhost:8080/personalbudget/graphiql
+-------------Queries ---------------
+query{
+  findBudgetById(id: 1){
+    id
+    description
+    kind,
+    dueDate,
+    category{name}
+   person{
+      id
+      name
+      address{address, addressNumber, city{name}}
+      active
+      contacts{name, phone}
+    }
+  }
+}
+
+mutation{
+  saveBudget(budgetInput:{
+    description: "Drum"
+    kind: INCOME,
+    price: 500
+    personId: 1
+    categoryId: 5,
+    paymentDate: "2020-05-01"
+
+  }){
+    id,
+    description,
+    kind,
+    person{id, name}
+  }
+}

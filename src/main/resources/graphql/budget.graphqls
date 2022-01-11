@@ -1,0 +1,68 @@
+type  BudgetResponse{
+    list: [Budget]
+    totalElements: Int
+    totalPages: Int
+}
+
+type BudgetResumeResponse{
+    list: [BudgetResumeDTO]
+    totalElements: Int
+    totalPages: Int
+}
+
+enum  BudgetKind {
+    INCOME
+    EXPENSE
+}
+
+type Budget{
+    id: ID
+    description: String
+    dueDate: Date
+    paymentDate: Date
+    price: Int
+    observation: String
+    kind: BudgetKind
+    category: Category
+    person: Person
+}
+
+input BudgetInput{
+    description: String
+    dueDate: Date
+    paymentDate: Date
+    price: Int
+    observation: String
+    kind: BudgetKind
+    categoryId: Int
+    personId: Int
+}
+
+type BudgetResumeDTO{
+   id: ID
+   description: String
+   dueDate: Date
+   paymentDate: Date
+   price: String
+   kind: String
+   category: String
+   person: String
+}
+
+input BudgetFilter{
+    description: String
+    dueDateOf: String
+    dueDateUntil: String
+}
+
+extend type Query {
+    findBudgetById(id: Int): Budget
+    findBudget(budgetFilter: BudgetFilter,page: Int, size: Int ): BudgetResponse
+    resumeBudget(budgetFilter: BudgetFilter,page: Int, size: Int ): BudgetResumeResponse
+}
+
+extend type Mutation {
+    saveBudget(budgetInput: BudgetInput): Budget
+    updateBudget(id: Int, budgetInput: BudgetInput): Budget
+    deleteBudgetById(id: Int): Boolean
+}

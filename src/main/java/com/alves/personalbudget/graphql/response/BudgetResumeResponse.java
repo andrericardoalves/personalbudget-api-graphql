@@ -1,6 +1,7 @@
 package com.alves.personalbudget.graphql.response;
 
-import com.alves.personalbudget.model.Person;
+import com.alves.personalbudget.dto.BudgetResumeDTO;
+import com.alves.personalbudget.model.Budget;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,8 +11,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonResponse {
-    private List<Person> list;
+public class BudgetResumeResponse {
+    private List<BudgetResumeDTO> list;
     private long totalElements;
     private int totalPages;
 }

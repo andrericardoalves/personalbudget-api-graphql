@@ -1,11 +1,10 @@
-package com.alves.personalbudget.model;
+package com.alves.personalbudget.graphql.input;
 
+import com.alves.personalbudget.model.BudgetKind;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,11 +12,8 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Entity
-public class Budget {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class BudgetInput {
+
     private Long id;
 
     @NotNull
@@ -35,21 +31,11 @@ public class Budget {
     private String observation;
 
     @NotNull
-    @Enumerated(EnumType.STRING)
     private BudgetKind kind;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    private Long categoryId;
 
-    @ManyToOne
-    @JoinColumn(name = "person_id")
-    private Person person;
-
-    @PrePersist
-    protected void onCreate() {
-        dueDate = LocalDate.now();
-    }
-
+    @NotNull
+    private Long personId;
 }

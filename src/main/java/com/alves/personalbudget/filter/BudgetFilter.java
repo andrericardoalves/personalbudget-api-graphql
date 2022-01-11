@@ -21,4 +21,5 @@ public class BudgetFilter {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dueDateUntil;
+
 }

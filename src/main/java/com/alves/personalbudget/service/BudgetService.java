@@ -8,6 +8,7 @@ import com.alves.personalbudget.model.Person;
 import com.alves.personalbudget.repository.BudgetRepository;
 import com.alves.personalbudget.repository.CustomizeBudgetRepositoryImpl;
 import com.alves.personalbudget.repository.PersonRepository;
+import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class BudgetService {
+public class BudgetService implements GraphQLQueryResolver {
     @Autowired
     private BudgetRepository repository;
 
